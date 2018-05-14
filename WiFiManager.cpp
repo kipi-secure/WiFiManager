@@ -633,6 +633,7 @@ void WiFiManager::handleWifiSave() {
   page += FPSTR(HTTP_END);
 
   server->sendHeader("Content-Length", String(page.length()));
+  server->sendHeader("Access-Control-Allow-Origin", "*");
   server->send(200, "text/html", page);
 
   DEBUG_WM(F("Sent wifi save page"));
